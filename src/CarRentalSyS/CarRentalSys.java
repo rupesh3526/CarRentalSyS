@@ -102,9 +102,12 @@ public class CarRentalSys {
                     System.out.println("Thank you for using our service.");
                 }
 
-            } else {
+            } else if (choice==3){
                 break;
+            }else{
+                System.out.println("wrong input");
             }
+
         }
     }
     public void rentCar(Car car, Customer customer, int days){
