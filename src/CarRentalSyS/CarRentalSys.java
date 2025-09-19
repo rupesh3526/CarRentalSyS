@@ -48,6 +48,7 @@ public class CarRentalSys {
                 for (Car car : cars) {
                     if (car.getCarId().equals(carId)) {
                         selectedCar = car;
+                        car.setAvaliable(false);
                         break;
                     }
 
@@ -79,7 +80,27 @@ public class CarRentalSys {
                 }
 
             } else if (choice == 2) {
-                System.out.println("Choice 2 has been selected.");
+                System.out.println("--Return car--");
+                System.out.println("Enter the car Id you want to return.");
+                String carId= sc.nextLine();
+                Car rentedCar = null;
+                for (Rental rented : rentals){
+                    if (rented.getCar().getCarId().equals(carId)){
+                        System.out.println("This car is reted by :" +rented.getCustomer().getCustomerName());
+                        rented.getCar().setAvaliable(true);
+                        rentals.remove(rented);
+                        rentedCar=rented.getCar();
+                        break;
+
+
+                    }
+                    else {
+                        System.out.println("This Car was never Rented");
+                    }
+                }
+                if (rentedCar!=null){
+                    System.out.println("Thank you for using our service.");
+                }
 
             } else {
                 break;
